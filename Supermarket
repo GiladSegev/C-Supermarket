@@ -287,12 +287,12 @@ void Remove_product(super_market* sm)
 	if (position != -1)
 	{
 		printf("%s\n", delete_barcode_succeed);
+		free(sm->product_list[position]);
 		if (position != sm->number_of_products - 1) {
-			for (i = sm->number_of_products - 1; i > position; i--) {
-				sm->product_list[i] = sm->product_list[i - 1];
+			for (i = position; i < sm->number_of_products-1; i++) {
+				sm->product_list[i] = sm->product_list[i + 1];
 			}
 		}
-		free(sm->product_list[sm->number_of_products - 1]);
 		sm->number_of_products--;
 	}
 
